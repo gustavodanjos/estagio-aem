@@ -67,20 +67,3 @@ Para este projeto, as seguintes ferramentas e versões foram utilizadas:
 *   **Print 2:** Página renderizada mostrando o subtítulo preenchido sendo exibido abaixo do texto padrão.
 > <img width="1809" height="601" alt="image" src="https://github.com/user-attachments/assets/96f42d8e-b3a4-45d7-99d6-df29263f2a8d" />
 ---
-
-### Scripts de Build Maven Úteis
-
-Para construir todos os módulos e fazer o deploy do pacote `all` para a instância local do AEM:
-```bash
-mvn clean install -PautoInstallSinglePackage
-```
-
-Para fazer o deploy apenas do código Java (bundle) para o author:
-```bash
-mvn clean install -PautoInstallBundle
-```
-
-Para fazer o deploy apenas do pacote de conteúdo (ex: de dentro do módulo `ui.apps`):
-```bash
-mvn clean install -PautoInstallPackage
-```
