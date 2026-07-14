@@ -3,6 +3,11 @@
 ## Objetivo
 O objetivo deste desafio é configurar o ambiente de desenvolvimento local para o Adobe Experience Manager (AEM), realizar o primeiro deploy do projeto WKND e modificar um componente existente (HelloWorld) para incluir um novo campo de subtítulo, explorando o ciclo completo de desenvolvimento (editar → build → deploy → ver no Author).
 
+### Critérios de Aceite
+- [x] Author rodando e página acessível com o componente
+- [x] Novo campo aparece no dialog e o valor é renderizado na página
+- [x] README explica cada passo; prints comprovam o funcionamento
+
 ## Ambiente de Desenvolvimento
 
 Para este projeto, as seguintes ferramentas e versões foram utilizadas:
@@ -67,3 +72,13 @@ Para este projeto, as seguintes ferramentas e versões foram utilizadas:
 *   **Print 2:** Página renderizada mostrando o subtítulo preenchido sendo exibido abaixo do texto padrão.
 > <img width="1809" height="601" alt="image" src="https://github.com/user-attachments/assets/96f42d8e-b3a4-45d7-99d6-df29263f2a8d" />
 ---
+
+## Conhecimentos Adquiridos
+
+Durante a execução deste desafio, os seguintes conceitos e práticas foram consolidados:
+
+* **Arquitetura Base do AEM:** Compreensão da estrutura de módulos (`core`, `ui.apps`, `ui.content`) gerada pelo *AEM Project Archetype* e como eles interagem.
+* **Ciclo de Vida de Desenvolvimento (AEM):** Prática do fluxo contínuo de edição de código, build com Maven (`mvn clean install`) e deploy automatizado para a instância local do Author.
+* **Touch UI Dialogs:** Entendimento prático de como a interface de autoria é construída via XML (`.content.xml`), permitindo a extensão do componente com novos campos de *input* (como o campo de texto adicionado).
+* **Sling Models:** Utilização da anotação `@ValueMapValue` em classes Java para mapear de forma limpa as propriedades persistidas no JCR (provenientes do Dialog) e expô-las.
+* **HTL (HTML Template Language):** Uso da sintaxe e da *Expression Language* do HTL (`${model.property}`) para acessar métodos do Sling Model e renderizar o conteúdo dinâmico na página, mantendo a camada de apresentação separada da lógica.
