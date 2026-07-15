@@ -13,34 +13,43 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 */-->
+<sly
+  data-sly-use.model="com.adobe.aem.guides.wknd.core.models.HelloWorldModel"
+></sly>
+
 <div class="cmp-helloworld" data-cmp-is="helloworld">
   <h2 class="cmp-helloworld__title">Hello World Component</h2>
-  <div class="cmp-helloworld__item" data-sly-test="${properties.text}">
+
+  <div
+    class="cmp-helloworld__item"
+    data-sly-test="${properties.text || wcmmode.edit}"
+  >
     <p class="cmp-helloworld__item-label">Text property:</p>
     <pre
       class="cmp-helloworld__item-output"
       data-cmp-hook-helloworld="property"
     >
-${properties.text}</pre
+${properties.text || 'Adicione um texto aqui'}</pre
     >
   </div>
-  <div
-    class="cmp-helloworld__item"
-    data-sly-use.model="com.adobe.aem.guides.wknd.core.models.HelloWorldModel"
-    data-sly-test="${model.message}"
-  >
+
+  <div class="cmp-helloworld__item" data-sly-test="${model.message}">
     <p class="cmp-helloworld__item-label">Model message:</p>
     <pre class="cmp-helloworld__item-output" data-cmp-hook-helloworld="model">
 ${model.message}</pre
     >
   </div>
-  <div class="cmp-helloworld__item" data-sly-test="${model.subtitulo}">
+
+  <div
+    class="cmp-helloworld__item"
+    data-sly-test="${model.subtitulo || wcmmode.edit}"
+  >
     <p class="cmp-helloworld__item-label">Subtítulo:</p>
     <pre
       class="cmp-helloworld__item-output"
       data-cmp-hook-helloworld="subtitulo"
     >
-${model.subtitulo}</pre
+${model.subtitulo || 'Adicione um subtítulo aqui'}</pre
     >
   </div>
 </div>
