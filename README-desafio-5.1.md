@@ -60,6 +60,9 @@ Para este projeto, as seguintes ferramentas e versões foram utilizadas:
     *   Novo deploy das alterações usando Maven.
     *   Validação no AEM Author: Edição do componente na página, preenchimento do novo campo "Subtítulo" e verificação se o valor é exibido corretamente na página renderizada.
 
+6.  **Melhoria na Experiência do Autor:**
+    *   **Interatividade de Placeholders (HTL):** O `helloworld.html` foi refatorado para usar lógica condicional (`wcmmode.edit`) que exibe textos amigáveis (ex: "Adicione um subtítulo aqui") apenas para o autor quando o campo está vazio, guiando a edição sem sujar a página final do usuário.
+
 ## Evidências
 
 * **Antes da modificação:**
@@ -82,3 +85,4 @@ Durante a execução deste desafio, os seguintes conceitos e práticas foram con
 * **Touch UI Dialogs:** Entendimento prático de como a interface de autoria é construída via XML (`.content.xml`), permitindo a extensão do componente com novos campos de *input* (como o campo de texto adicionado).
 * **Sling Models:** Utilização da anotação `@ValueMapValue` em classes Java para mapear de forma limpa as propriedades persistidas no JCR (provenientes do Dialog) e expô-las.
 * **HTL (HTML Template Language):** Uso da sintaxe e da *Expression Language* do HTL (`${model.property}`) para acessar métodos do Sling Model e renderizar o conteúdo dinâmico na página, mantendo a camada de apresentação separada da lógica.
+* **UX de Autoria e Variáveis HTL:** Uso da variável implícita `wcmmode.edit` combinada a fallback values lógicos no HTL para injetar interatividade condicional visível apenas para os Content Authors.
