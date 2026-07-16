@@ -1,0 +1,56 @@
+.wknd-profile-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  margin: 16px 0;
+  max-width: 400px;
+  border-top: 6px solid #ffea00;
+  font-family: Arial, sans-serif;
+  transition: transform 0.2s ease;
+}
+
+.wknd-profile-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.wknd-profile-card__header {
+  border-bottom: 1px solid #eeeeee;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+}
+
+.wknd-profile-card__label {
+  display: block;
+  font-size: 11px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+  font-weight: normal;
+}
+
+.wknd-profile-card__name {
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  color: #202020;
+  font-weight: 700;
+}
+
+.wknd-profile-card__job-title {
+  margin: 0;
+  font-size: 16px;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.wknd-profile-card__bio {
+  color: #666666;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.wknd-profile-card__bio p {
+  margin: 0;
+}
