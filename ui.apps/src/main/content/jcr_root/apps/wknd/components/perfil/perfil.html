@@ -1,0 +1,14 @@
+<sly data-sly-use.placeholderTemplate="core/wcm/components/commons/v1/templates.html"/>
+<sly data-sly-use.profile="com.adobe.aem.guides.wknd.core.models.PerfilModel" />
+
+<article class="wknd-profile-card">
+    <header class="wknd-profile-card__header">
+        <h2 class="wknd-profile-card__name" data-sly-test="${profile.fullName}">Nome: ${profile.fullName}</h2>
+        <h3 class="wknd-profile-card__job-title" data-sly-test="${profile.jobTitle}">Cargo: ${profile.jobTitle}</h3>
+    </header>
+    <section class="wknd-profile-card__bio" data-sly-test="${profile.bio}">
+        <p>Bio: ${profile.bio}</p>
+    </section>
+</article>
+
+<sly data-sly-call="${placeholderTemplate.placeholder @ isEmpty=!profile.fullName}"></sly>
