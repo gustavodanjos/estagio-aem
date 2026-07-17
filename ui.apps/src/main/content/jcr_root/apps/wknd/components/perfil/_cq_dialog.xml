@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0"
+    jcr:primaryType="nt:unstructured"
+    jcr:title="Cartão de Perfil"
+    sling:resourceType="cq/gui/components/authoring/dialog">
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+        <items jcr:primaryType="nt:unstructured">
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+                <items jcr:primaryType="nt:unstructured">
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+                        <items jcr:primaryType="nt:unstructured">
+                            <columns
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/fixedcolumns"
+                                margin="{Boolean}true">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <column
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/container">
+                                        <items jcr:primaryType="nt:unstructured">
+                                            <fullName
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                                fieldLabel="Nome"
+                                                name="./fullName"
+                                                emptyText="Digite o nome completo"
+                                                required="{Boolean}true"/>
+                                            <jobTitle
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Cargo"
+                                                name="./jobTitle"
+                                                emptyOption="{Boolean}true"
+                                                emptyText="Selecione um cargo">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <estagiario jcr:primaryType="nt:unstructured" text="Estagiário" value="Estagiário"/>
+                                                    <trainee jcr:primaryType="nt:unstructured" text="Trainee" value="Trainee"/>
+                                                    <junior jcr:primaryType="nt:unstructured" text="Desenvolvedor Júnior" value="Desenvolvedor Júnior"/>
+                                                    <pleno jcr:primaryType="nt:unstructured" text="Desenvolvedor Pleno" value="Desenvolvedor Pleno"/>
+                                                    <senior jcr:primaryType="nt:unstructured" text="Desenvolvedor Sênior" value="Desenvolvedor Sênior"/>
+                                                    <techlead jcr:primaryType="nt:unstructured" text="Tech Lead" value="Tech Lead"/>
+                                                    <manager jcr:primaryType="nt:unstructured" text="Gerente" value="Gerente"/>
+                                                    <director jcr:primaryType="nt:unstructured" text="Diretor" value="Diretor"/>
+                                                    <ceo jcr:primaryType="nt:unstructured" text="CEO" value="CEO"/>
+                                                </items>
+                                            </jobTitle>
+                                            <bio
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/textarea"
+                                                fieldLabel="Biografia"
+                                                name="./bio"
+                                                emptyText="Escreva uma breve biografia"/>
+                                        </items>
+                                    </column>
+                                </items>
+                            </columns>
+                        </items>
+                    </properties>
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
