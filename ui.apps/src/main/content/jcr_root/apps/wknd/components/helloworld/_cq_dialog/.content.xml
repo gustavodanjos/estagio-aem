@@ -16,6 +16,13 @@
                         sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
                         fieldLabel="Text"
                         name="./text"/>
+
+                    <subtitulo
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                        fieldLabel="Subtítulo"
+                        emptyText="Digite o subtítulo aqui"
+                        name="./subtitulo"/>
                 </items>
             </column>
         </items>
