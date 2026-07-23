@@ -1,9 +1,101 @@
-.cmp-teaser {}
-.cmp-teaser__image {}
-.cmp-teaser__content {}
-.cmp-teaser__pretitle {}
-.cmp-teaser__title {}
-.cmp-teaser__title-link {}
-.cmp-teaser__description {}
-.cmp-teaser__action-container {}
-.cmp-teaser__action-link {}
+/* --- Card do Teaser (equivale ao "carousel-slide" do exemplo) --- */
+.cmp-teaser {
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+.cmp-teaser:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* --- Imagem (topo do card, com corte 16:10 como no exemplo) --- */
+.cmp-teaser__image {
+  position: relative;
+  overflow: hidden;
+}
+.cmp-teaser__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+  display: block;
+}
+.cmp-teaser:hover .cmp-teaser__image img {
+  transform: scale(1.05);
+}
+
+/* --- Conteúdo (padding interno) --- */
+.cmp-teaser__content {
+  padding: 20px 24px 24px;
+}
+
+/* --- Pretitle usado como "badge" de região (Sudeste/Nordeste) --- */
+.cmp-teaser__pretitle {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.1);
+  padding: 4px 10px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+/* --- Título --- */
+.cmp-teaser__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 4px 0 6px;
+}
+.cmp-teaser__title-link {
+  color: #1a1a1a;
+  text-decoration: none;
+}
+.cmp-teaser:hover .cmp-teaser__title-link {
+  color: #2e7d32;
+}
+
+/* --- Descrição --- */
+.cmp-teaser__description {
+  font-size: 0.875rem;
+  color: #6b6b6b;
+  line-height: 1.4;
+  margin-bottom: 16px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- Action container (link "Saiba mais" / seta) --- */
+.cmp-teaser__action-container {
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+.cmp-teaser__action-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  padding: 10px 22px;
+  border-radius: 8px;
+  background: #2e7d32;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  transition: background-color 0.2s ease;
+}
+.cmp-teaser__action-link:hover {
+  background: #245e28;
+}
