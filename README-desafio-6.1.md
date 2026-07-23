@@ -166,7 +166,7 @@ Como o Style System do AEM aplica a política por **caminho estrutural**, estili
 
 Print do teste com o usuário `content-authors` (sem privilégio de admin), confirmando que apenas os componentes liberados na policy aparecem no seletor de inserção:
 
-<!-- Cole aqui o print do painel "+ Insert Component" logado como content-authors -->
+> <img width="1860" height="964" alt="Allow-comp" src="https://github.com/user-attachments/assets/217ca6b6-c9f7-4495-9902-6e29a3019312" />
 
 ---
 
@@ -175,36 +175,66 @@ Print do teste com o usuário `content-authors` (sem privilégio de admin), conf
 ### 8.1 Estado Inicial (Core Components sem estilização customizada)
 Setas do carousel como texto puro ("Previous"/"Next"), header genérico sem identidade visual, botão de teaser sem estilo de botão:
 
-<!-- Cole aqui o print do estado "cru" (antes da estilização) -->
+> <img width="1839" height="946" alt="Antes1" src="https://github.com/user-attachments/assets/676c214e-18f1-4a10-afe7-9433174b93c5" />
+> <img width="1839" height="946" alt="Antes2" src="https://github.com/user-attachments/assets/cae9a050-4020-442a-abd0-fd0ba7562bc8" />
 
 ### 8.2 Header estilizado (`.site-header`)
 Logo com gradiente verde/amarelo, navegação alinhada à direita, fundo navy:
 
-<!-- Cole aqui o print do header final -->
+> <img width="1841" height="114" alt="image" src="https://github.com/user-attachments/assets/e1ca385d-003c-4339-b91e-8f0ae861805a" />
 
 ### 8.3 Seção "Destinos" — Carousel + Teasers
 Título de seção com barra verde, cards com imagem, badge de região, título, descrição e CTA "Reservar Agora":
 
-<!-- Cole aqui o print da seção Destinos completa -->
+> <img width="1841" height="861" alt="image" src="https://github.com/user-attachments/assets/f8d54918-d08a-4ddb-b55f-07203a044b80" />
 
 ### 8.4 Footer estilizado (`.site-footer`)
 Colunas "Sobre" e "Contato" sobre fundo navy, posicionadas ao final do layout:
 
-<!-- Cole aqui o print do footer -->
+> <img width="1841" height="195" alt="image" src="https://github.com/user-attachments/assets/1b2cc577-1b55-4218-8528-6bd9b40a497c" />
 
 ### 8.5 Layout Mode — Definição de Colunas (Desktop)
 Grade sobreposta mostrando a distribuição de colunas do Container central:
 
-<!-- Cole aqui o print do Layout Mode com a régua de colunas -->
+> <img width="1849" height="929" alt="image" src="https://github.com/user-attachments/assets/5084fb3a-b377-422c-8628-fd4a765727d9" />
 
 ### 8.6 Estrutura JCR (Content Tree)
 Árvore de componentes da página, evidenciando a hierarquia Header → Container "Destinos" (Title + Carousel) → Footer:
 
-<!-- Cole aqui o print do Content Tree do Author -->
+> <img width="1849" height="929" alt="image" src="https://github.com/user-attachments/assets/6afbfa58-b133-46a8-ab83-cfb14ea2c532" />
 
-### 8.7 Página Final — Modo Padrão (localhost:4502)
+### 8.7 Estrutura JCR (CRXDE Lite)
+Visualização da estrutura de nós no CRXDE Lite, confirmando a hierarquia e os componentes utilizados:
+
+> <img width="1849" height="929" alt="image" src="https://github.com/user-attachments/assets/e7c25228-0da9-4c72-8dcd-6d4af1a8a07c" />
+
+### 8.8 Allowed Components — Policy do Container Central
+Print da policy do Container central, mostrando os componentes liberados para inserção pelo autor:
+
+> <img width="1860" height="964" alt="Allow-comp" src="https://github.com/user-attachments/assets/217ca6b6-c9f7-4495-9902-6e29a3019312" />
+
+### 8.9 Página Final — Modo Padrão (localhost:4502)
 Renderização completa da LP, deslogado/aba anônima, confirmando que o resultado funciona fora do modo de edição:
 
-<!-- Cole aqui o print de localhost:4502/content/wknd/us/en/desafio-6-1.html em aba anônima -->
+* **Conta de usuário**: `content-authors`
+
+> <img width="1860" height="964" alt="teste-user" src="https://github.com/user-attachments/assets/a887bc50-bf39-41a0-ae07-a1a8e3bb8e2c" />
+
+* **Login Como**: `content-authors` localhost:4502/content/wknd/us/en/desafio-6-1.html em aba anônima
+
+> <img width="1859" height="962" alt="image" src="https://github.com/user-attachments/assets/6a6b2411-c841-4262-8314-80342acf8045" />
+> <img width="1859" height="596" alt="image" src="https://github.com/user-attachments/assets/d76ca863-8a37-4a2e-91c5-2b28bc75a2f5" />
+
+### 8.10 Evidências Extras
+* **Template - Landing Page - Desafio 6.1**
+> <img width="257" height="409" alt="image" src="https://github.com/user-attachments/assets/0479cfc1-76b7-4366-9aca-6df9598eeded" />
+
+* **Estrutura WKND - sites**
+> <img width="1286" height="431" alt="image" src="https://github.com/user-attachments/assets/686f69c2-2d05-4455-bfd6-3e3115615116" />
+
+
+### 8.11 Demonstração Final
+> https://github.com/user-attachments/assets/75ff0baa-3a87-4f06-a1d6-d3295863367e
+
 
 ---
