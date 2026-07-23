@@ -1,1 +1,134 @@
-.cmp-container {}
+.cmp-container {
+}
+
+.site-header,
+.site-header .cmp-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  min-height: 64px;
+}
+
+.site-header {
+  padding: 12px 32px;
+  background-color: #0d2240;
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25);
+}
+
+// Força o container interno a ocupar toda a largura do header,
+// senão o margin-left:auto do nav não tem espaço pra empurrar
+.site-header .cmp-container {
+  width: 100% !important;
+  gap: 12px;
+}
+
+.site-header .cmp-container > .title,
+.site-header .cmp-container > .text,
+.site-header .cmp-container > .image {
+  width: auto !important;
+  flex: 0 0 auto !important;
+  margin: 0 !important;
+}
+
+.site-header .cmp-container > .image {
+  order: 1;
+}
+
+.site-header .cmp-container > .title {
+  order: 2;
+}
+
+.site-header .cmp-container > .text {
+  order: 3;
+  margin-left: auto !important; // empurra o nav pra ponta direita
+}
+
+.site-header .image .cmp-image img,
+.site-header .image .cmp-image__image {
+  height: 32px;
+  width: 32px;
+  display: block;
+  border-radius: 8px;
+}
+
+.site-header .title .cmp-title__text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.site-header .text .cmp-text {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.site-header .text .cmp-text a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  opacity: 0.85;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.site-footer {
+  background-color: #0f1b33;
+  color: #fff;
+  padding: 48px 24px 16px;
+  margin-top: auto;
+}
+
+.site-footer a {
+  color: #cfd6e0;
+  text-decoration: none;
+}
+
+.site-footer a:hover {
+  color: #fff;
+}
+
+.site-footer h3,
+.site-footer h4 {
+  color: #fff;
+  margin-bottom: 12px;
+}
+
+/* Layout dos containers do footer */
+.site-footer > .cmp-container {
+  display: flex;
+  gap: 3rem;
+}
+
+.site-footer > .cmp-container > .container {
+  flex: 1;
+}
+
+.site-footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 32px;
+  padding-top: 16px;
+  font-size: 0.75rem;
+  color: #8a94a6;
+  text-align: center;
+}
+
+body {
+  background-color: #efebeb;
+}
+
+.aem-Grid-newComponent,
+.new.newpar.section,
+.newpar {
+  height: 0 !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+}
