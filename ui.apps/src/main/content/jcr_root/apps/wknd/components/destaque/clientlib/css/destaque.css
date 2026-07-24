@@ -1,0 +1,83 @@
+/* Estilos Base */
+.cmp-destaque {
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    font-family: Arial, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cmp-destaque:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.cmp-destaque__title {
+    margin-top: 0;
+    font-size: 1.5rem;
+}
+
+.cmp-destaque__text {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+}
+
+.cmp-destaque__button {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.cmp-destaque__button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Alinhamentos Dinâmicos */
+.cmp-destaque--align-center {
+    text-align: center;
+}
+.cmp-destaque--align-right {
+    text-align: right;
+}
+.cmp-destaque--align-left {
+    text-align: left;
+}
+
+/* Modificador do Style System: Claro */
+.cmp-destaque--claro {
+    background-color: #f9f9f9;
+    color: #333333;
+    border: 1px solid #e0e0e0;
+}
+
+.cmp-destaque--claro .cmp-destaque__button {
+    background-color: #00548f;
+    color: #ffffff;
+}
+
+.cmp-destaque--claro .cmp-destaque__button:hover {
+    background-color: #003a63;
+}
+
+/* Modificador do Style System: Escuro */
+.cmp-destaque--escuro {
+    background-color: #333333;
+    color: #ffffff;
+}
+
+.cmp-destaque--escuro .cmp-destaque__title {
+    color: #ffffff;
+}
+
+.cmp-destaque--escuro .cmp-destaque__button {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.cmp-destaque--escuro .cmp-destaque__button:hover {
+    background-color: #cccccc;
+}
