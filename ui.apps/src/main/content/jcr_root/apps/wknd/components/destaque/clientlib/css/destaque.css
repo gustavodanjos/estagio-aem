@@ -1,9 +1,15 @@
 /* Estilos Base */
 .cmp-destaque {
     padding: 2rem;
-    border-radius: 8px;
+    border-radius: 12px;
     margin-bottom: 2rem;
     font-family: Arial, sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cmp-destaque:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .cmp-destaque__title {
@@ -22,7 +28,23 @@
     border-radius: 4px;
     text-decoration: none;
     font-weight: bold;
-    transition: background-color 0.3s;
+    transition: all 0.3s ease;
+}
+
+.cmp-destaque__button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Alinhamentos Dinâmicos */
+.cmp-destaque--align-center {
+    text-align: center;
+}
+.cmp-destaque--align-right {
+    text-align: right;
+}
+.cmp-destaque--align-left {
+    text-align: left;
 }
 
 /* Modificador do Style System: Claro */
