@@ -14,4 +14,6 @@ public interface Destaque {
     String getButtonUrl();
 
     boolean isMostrarBotao();
+
+    String getAlignment();
 }

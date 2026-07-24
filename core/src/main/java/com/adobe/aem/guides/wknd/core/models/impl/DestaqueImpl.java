@@ -25,6 +25,9 @@ public class DestaqueImpl implements Destaque {
     @ValueMapValue
     private String buttonUrl;
 
+    @ValueMapValue
+    private String alignment;
+
     @Override
     public String getTitle() {
         return title;
@@ -48,5 +51,10 @@ public class DestaqueImpl implements Destaque {
     @Override
     public boolean isMostrarBotao() {
         return buttonUrl != null && !buttonUrl.trim().isEmpty();
+    }
+
+    @Override
+    public String getAlignment() {
+        return alignment != null ? alignment : "left";
     }
 }
