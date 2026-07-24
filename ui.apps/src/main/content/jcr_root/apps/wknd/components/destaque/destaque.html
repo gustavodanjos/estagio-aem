@@ -6,7 +6,7 @@
 <sly data-sly-test.hasContent="${model.title || model.text}"/>
 <sly data-sly-test="${!hasContent}" data-sly-call="${placeholderTemplate.placeholder @ isEmpty=true}"></sly>
 
-<section class="cmp-destaque" data-sly-test="${hasContent}">
+<section class="cmp-destaque cmp-destaque--align-${model.alignment}" data-sly-test="${hasContent}">
     <h2 class="cmp-destaque__title" data-sly-test="${model.title}">${model.title}</h2>
     
     <p class="cmp-destaque__text" data-sly-test="${model.text}">${model.text}</p>
