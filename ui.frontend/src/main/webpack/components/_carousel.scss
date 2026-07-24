@@ -1,14 +1,86 @@
-.cmp-carousel {}
-.cmp-carousel__content {}
-.cmp-carousel__item {}
-.cmp-carousel__actions {}
-.cmp-carousel__action {}
-.cmp-carousel__action--disabled {}
-.cmp-carousel__action--previous {}
-.cmp-carousel__action--next {}
-.cmp-carousel__action--pause {}
-.cmp-carousel__action--play {}
-.cmp-carousel__action-icon {}
-.cmp-carousel__action-text {}
-.cmp-carousel__indicators {}
-.cmp-carousel__indicator {}
+/* --- Wrapper geral --- */
+.cmp-carousel {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+/* --- Slide ativo (o AEM Core só mostra 1 por vez) --- */
+.cmp-carousel__item {
+  border-radius: 16px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease;
+  min-height: auto;
+}
+.cmp-carousel__item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Setas (prev/next) como botão circular com ícone --- */
+.cmp-carousel__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 20px;
+}
+.cmp-carousel__action {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.cmp-carousel__action:hover {
+  border-color: #2e7d32;
+  color: #2e7d32;
+}
+.cmp-carousel__action-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+.cmp-carousel__action-icon::before {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+.cmp-carousel__action--previous .cmp-carousel__action-icon::before {
+  transform: rotate(-135deg);
+}
+.cmp-carousel__action--next .cmp-carousel__action-icon::before {
+  transform: rotate(45deg);
+}
+
+/* --- Dots (indicators) --- */
+.cmp-carousel__indicators {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+  list-style: none;
+  padding: 0;
+}
+.cmp-carousel__indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  cursor: pointer;
+}
+.cmp-carousel__indicator--active {
+  background: #2e7d32;
+}

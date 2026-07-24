@@ -1,3 +1,21 @@
-.cmp-title {}
-.cmp-title__text {}
-.cmp-title__link {}
+.site-header .cmp-title__text {
+  background: linear-gradient(90deg, #009c3b, #f0c020);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.cmp-title__link {
+}
+
+.section-title {
+}
+
+.section-title .cmp-title__text {
+  color: #1a1a1a;
+  font-size: 1.75rem;
+  font-weight: 800;
+  border-left: 4px solid #2e7d32;
+  padding-left: 12px;
+  margin-left: 24px;
+}
