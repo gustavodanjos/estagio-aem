@@ -50,6 +50,26 @@
                                                 fieldLabel="URL do Botão"
                                                 name="./buttonUrl"
                                                 rootPath="/content"/>
+                                            <alignment
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                                fieldLabel="Alinhamento"
+                                                name="./alignment">
+                                                <items jcr:primaryType="nt:unstructured">
+                                                    <left
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Esquerda"
+                                                        value="left"/>
+                                                    <center
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Centro"
+                                                        value="center"/>
+                                                    <right
+                                                        jcr:primaryType="nt:unstructured"
+                                                        text="Direita"
+                                                        value="right"/>
+                                                </items>
+                                            </alignment>
                                         </items>
                                     </column>
                                 </items>
