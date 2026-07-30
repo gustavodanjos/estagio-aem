@@ -48,15 +48,15 @@ ui.apps/src/main/content/jcr_root/apps/wknd/components/equipe/
 
 ### 3.2 Criação dos Sling Models Blindados (Back-end)
 
-- [ ] **Model de Membro (`TeamMemberImpl.java`)**:
-  - [ ] Anotação `@Model` adaptável a `Resource.class` com `defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL`.
-  - [ ] Injeção das propriedades `./name`, `./role` e `./photo` com valores de fallback através de `@Default`.
-  - [ ] Implementação dos métodos de estado `hasPhoto()` e `hasRole()` utilizando verificação segura anti-nulo.
-  - [ ] Implementado método helper `getInitial()` que extrai a inicial do nome em maiúsculo para geração automática de *Avatar Placeholder* visual via HTL/CSS quando a foto não é fornecida.
-- [ ] **Model da Seção (`TeamImpl.java`)**:
-  - [ ] Anotação `@Model` adaptável a `SlingHttpServletRequest` e `Resource`.
-  - [ ] Injeção da lista de membros via `@ChildResource(name = "members")` e injeção do serviço OSGi via `@OSGiService`.
-  - [ ] No método `getMembers()`, implementou-se o corte de segurança `members.subList(0, limite)` guiado pelo `maxMembros` do OSGi. A lógica foi blindada com verificação inicial de nulidade (`members == null || members.isEmpty() -> Collections.emptyList()`).
+- [x] **Model de Membro (`TeamMemberImpl.java`)**:
+  - [x] Anotação `@Model` adaptável a `Resource.class` com `defaultInjectionStrategy = DefaultInjectionStrategy.OPTIONAL`.
+  - [x] Injeção das propriedades `./name`, `./role` e `./photo` com valores de fallback através de `@Default`.
+  - [x] Implementação dos métodos de estado `hasPhoto()` e `hasRole()` utilizando verificação segura anti-nulo.
+  - [x] Implementado método helper `getInitial()` que extrai a inicial do nome em maiúsculo para geração automática de *Avatar Placeholder* visual via HTL/CSS quando a foto não é fornecida.
+- [x] **Model da Seção (`TeamImpl.java`)**:
+  - [x] Anotação `@Model` adaptável a `SlingHttpServletRequest` e `Resource`.
+  - [x] Injeção da lista de membros via `@ChildResource(name = "members")` e injeção do serviço OSGi via `@OSGiService`.
+  - [x] No método `getMembers()`, implementou-se o corte de segurança `members.subList(0, limite)` guiado pelo `maxMembros` do OSGi. A lógica foi blindada com verificação inicial de nulidade (`members == null || members.isEmpty() -> Collections.emptyList()`).
 
 ### 3.3 Dialog e HTL/Sightly (Front-end no AEM)
 
@@ -65,6 +65,7 @@ ui.apps/src/main/content/jcr_root/apps/wknd/components/equipe/
   - **Aba Membros**: Multifield configurado com `composite="{Boolean}true"` contendo Nome (obrigatório), Cargo/Função e Foto. Para a seleção de foto, adotou-se o componente `granite/ui/components/coral/foundation/form/pathfield` apontando para a raiz `/content/dam`, garantindo integração nativa com o DAM.
 - **HTL (`equipe.html`)**:
   - Markup semântico utilizando `<section>`, `<article>`, `<h2>` e `<h3>`.
+  - Iteração da lista de membros via `data-sly-list="${membro : team.members}"`, consumindo diretamente a coleção injetada por `@ChildResource` no Sling Model.
   - Implementado bloco de *Empty State* que é renderizado exclusivamente no modo de edição (`wcmmode.edit`) quando a lista está vazia, instruindo o autor do conteúdo.
   - Substituição da lógica condicional pesada na View pela invocação de métodos de estado do Java (`${membro.hasPhoto}`, `${membro.hasRole}` e `${membro.initial}`).
 
@@ -171,6 +172,8 @@ A especificação do Sightly/HTL veta o uso de parênteses para chamadas de mét
 
 ### 8.4 Estrutura JCR (CRXDE Lite) e Persistência do Multifield Composto
 
+> Teste de blindagem (injection strategy OPTIONAL): remoção da propriedade jcr:title do componente via CRXDE Lite, comprovando que a seção continua renderizando sem quebrar mesmo com a propriedade ausente (degradação elegante em vez de erro 500)
+
 *(Árvore de conteúdo JCR demonstrando a persistência de ./members com nós item0, item1...)*
 
 * **Estrutura JCR:**
@@ -191,7 +194,7 @@ A especificação do Sightly/HTL veta o uso de parênteses para chamadas de mét
 
 ### 8.5 Demonstração Final e Efeito Responsivo
 
-*(Demonstração final comprovando a funcionalidade e interatividade do componente na LP)*
+> **O vídeo mostra a alteração do maxMembros no Console OSGi (Configuration Manager) e o reflexo imediato na contagem de cards exibidos na página, após atualização do browser, comprovando a reatividade sem redeploy exigida no critério de aceite.**
 
 > [Gravação de tela de 2026-07-29 19-38-45.webm](https://github.com/user-attachments/assets/c6b701f7-2056-46f1-a342-2ee03e7c255c)
 
