@@ -1,0 +1,40 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.css @ categories='wknd.components.equipe'}"/>
+
+<sly data-sly-use.team="com.adobe.aem.guides.wknd.core.models.Team"/>
+
+<section class="wknd-team-section" data-sly-test="${!team.empty || wcmmode.edit}">
+
+    <div class="wknd-team-empty-state" data-sly-test="${team.empty && wcmmode.edit}">
+        <strong>Componente "WKND - Nossa Equipe" vazio</strong>
+        Configure o diálogo deste componente no Touch UI para adicionar membros à equipe.
+    </div>
+
+    <sly data-sly-test="${!team.empty}">
+        <div class="wknd-team-header" data-sly-test="${team.title}">
+            <h2>${team.title}</h2>
+        </div>
+
+        <div class="wknd-team-grid" data-sly-list.membro="${team.members}">
+            <article class="wknd-team-card">
+                <div class="wknd-team-avatar-wrapper">
+                    <img class="wknd-team-avatar-image"
+                         data-sly-test="${membro.hasPhoto}"
+                         src="${membro.photo}"
+                         alt="${membro.name}"
+                         loading="lazy"/>
+                    <div class="wknd-team-avatar-placeholder"
+                         data-sly-test="${!membro.hasPhoto}"
+                         title="Sem foto de perfil">
+                        ${membro.initial}
+                    </div>
+                </div>
+
+                <div class="wknd-team-card-content">
+                    <h3>${membro.name}</h3>
+                    <p class="wknd-team-role" data-sly-test="${membro.hasRole}">${membro.role}</p>
+                </div>
+            </article>
+        </div>
+    </sly>
+</section>

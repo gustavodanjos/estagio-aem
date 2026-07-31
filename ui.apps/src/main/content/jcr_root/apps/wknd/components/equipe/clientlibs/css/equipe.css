@@ -1,0 +1,134 @@
+
+.wknd-team-section {
+    padding: 3rem 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    color: #202020;
+}
+
+.wknd-team-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.wknd-team-header h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #111827;
+    margin: 0 0 0.5rem 0;
+}
+
+.wknd-team-header::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 4px;
+    background: linear-gradient(90deg, #ffea00, #ffc107);
+    margin: 0.75rem auto 0;
+    border-radius: 2px;
+}
+
+/* Grid Responsivo Mobile-First: 1 col mobile, 2 tablet, 3 desktop */
+.wknd-team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+}
+
+/* Card Estilizado com Efeito Hover Elevation */
+.wknd-team-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wknd-team-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+}
+
+/* Contêiner da Imagem / Avatar */
+.wknd-team-avatar-wrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 3px solid #ffea00;
+    position: relative;
+    background-color: #f3f4f6;
+}
+
+.wknd-team-avatar-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.wknd-team-card:hover .wknd-team-avatar-image {
+    transform: scale(1.08);
+}
+
+/* Avatar Placeholder CSS para membros sem foto cadastrada (Degradação Elegante) */
+.wknd-team-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    color: #4b5563;
+    font-size: 2.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    user-select: none;
+}
+
+/* Texto e Informações */
+.wknd-team-card-content h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 0.35rem 0;
+}
+
+.wknd-team-role {
+    font-size: 0.925rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+/* Empty State para Autores Touch UI (wcmmode.edit) */
+.wknd-team-empty-state {
+    background: #fdf6b2;
+    border: 2px dashed #e02424;
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: #723b13;
+    font-weight: 500;
+    margin: 1.5rem 0;
+}
+
+.wknd-team-empty-state strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #9b1c1c;
+}
