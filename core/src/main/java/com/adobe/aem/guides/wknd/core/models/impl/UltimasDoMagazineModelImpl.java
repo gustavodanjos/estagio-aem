@@ -36,10 +36,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Implementação do Sling Model do componente Últimas do Magazine.
- * Suporta exportação para JSON nativo via AEM Exporter (Jackson).
- */
 @Model(
         adaptables = { SlingHttpServletRequest.class, Resource.class },
         adapters = { UltimasDoMagazineModel.class, ComponentExporter.class },
@@ -167,7 +163,6 @@ public class UltimasDoMagazineModelImpl implements UltimasDoMagazineModel {
             return "";
         }
 
-        // 1. Verificar subnó "image" ou "cq:featuredImage"
         String img = getFileReferenceFromChild(contentRes, "image");
         if (!isBlank(img)) {
             return img;
@@ -177,7 +172,6 @@ public class UltimasDoMagazineModelImpl implements UltimasDoMagazineModel {
             return img;
         }
 
-        // 2. Buscar recursivamente por qualquer propriedade fileReference dentro da página
         img = findFirstFileReference(contentRes);
         if (!isBlank(img)) {
             return img;
@@ -215,10 +209,7 @@ public class UltimasDoMagazineModelImpl implements UltimasDoMagazineModel {
         return null;
     }
 
-    /**
-     * Substitui StringUtils.isBlank(String) do commons-lang3,
-     * evitando dependência externa não resolvida no OSGi.
-     */
+
     private boolean isBlank(String value) {
         return value == null || value.trim().isEmpty();
     }
