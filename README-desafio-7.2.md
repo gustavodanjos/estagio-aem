@@ -204,6 +204,8 @@ _(Demonstração da configuração das Properties dos artigos)_
 Requisição HTTP para `/content/wknd/us/en/magazine.model.json`, respondendo nativamente com a serialização do Sling Model:
 
 > <img width="100%" alt="image" src="https://github.com/user-attachments/assets/bebe1390-f1c7-4255-8a48-e77e18bd0ccf" />
+> <img width="100%"  alt="image" src="https://github.com/user-attachments/assets/9d5b44b2-3774-46ee-9bd7-244177400724" />
+
 
 ### 8.5 Evidência — Sling Servlet Bônus (`.ultimas.json`)
 
