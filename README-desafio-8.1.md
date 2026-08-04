@@ -37,8 +37,12 @@ conf/wknd/settings/graphql/
     └── aventuras-wknd  (GraphQL endpoint associado à configuração WKND Site)
 
 conf/wknd/settings/graphql/persistentQueries/
-├── lista-aventuras                  (Query List persistida)
-└── lista-aventuras-filter     (Query com filtro por dificuldade persistida)
+├── lista-aventuras/
+│   └── Query List persistida (query a)
+├── lista-aventuras-byPath/
+│   └── Query ByPath persistida (query b)
+└── lista-aventuras-filter/
+    └── Query com filtro por dificuldade via variável persistida (query c)
 ```
 
 ---
@@ -61,9 +65,10 @@ conf/wknd/settings/graphql/persistentQueries/
 
 ### 3.3 Persisted Queries
 
-- **GraphQL Persisted Queries habilitada** na Cloud Configuration do projeto (**Tools → General → Configuration Browser → WKND Site → Properties → GraphQL Persisted Queries**) — sem essa etapa, o botão de salvar query no GraphiQL não fica disponível.
-- Query (a) persistida como `lista-aventuras`, acessível via GET em `/graphql/execute.json/wknd/lista-aventuras`.
-- Query (c) persistida como `lista-aventuras-filter`, acessível via GET com a variável passada diretamente na URL: `/graphql/execute.json/wknd/lista-aventuras-filter;dificuldade=facil`.
+- **GraphQL Persisted Queries habilitada** na Cloud Configuration do projeto WKND Site (**Tools → General → Configuration Browser → WKND Site → Properties**) — pré-requisito sem o qual o botão de salvar queries no GraphiQL não fica disponível.
+- Query (a) persistida como `lista-aventuras`, validada via GET em `/graphql/execute.json/wknd/lista-aventuras`.
+- Query (b) persistida como `lista-aventuras-byPath`, validada via GET em `/graphql/execute.json/wknd/lista-aventuras-byPath`.
+- Query (c) persistida como `lista-aventuras-filter`, validada via GET com a variável sobrescrita diretamente na URL: `/graphql/execute.json/wknd/lista-aventuras-filter;dificuldade=facil`.
 
 ---
 
@@ -94,21 +99,19 @@ conf/wknd/settings/graphql/persistentQueries/
 
 ---
 
-## 6. Cobertura dos Critérios de Aceite
+## 6. Critérios de Aceite
 
-- [X] **Models com validação e referência aninhada funcionando**: Model `Instrutor` com validação mínima 0 em `anosDeExperiencia`; Model `Aventura` referenciando `Instrutor` e retornando os campos aninhados corretamente nas queries.
-- [X] **As 3 queries rodando no GraphiQL (prints)**: List (a), ByPath (b) e filtro por dificuldade via variável (c), todas testadas e retornando dados corretos.
-- [X] **Persisted query respondendo via GET**: Query (a) e query (c) persistidas e validadas via requisição GET direto no navegador, incluindo passagem de variável pela URL (`;dificuldade=facil`).
-- [X] **README explica cada decisão de modelagem**: seção 4 detalha o porquê da enumeração em `dificuldade` e da referência em `instrutor`.
+- [x] **Models com validação e referência aninhada funcionando:** Model `Instrutor` com validação mínima 0 em `anosDeExperiencia`; Model `Aventura` referenciando `Instrutor` e retornando os campos aninhados corretamente nas queries.
+- [x] **As 3 queries rodando no GraphiQL:** List (a), ByPath (b) e filtro por dificuldade via variável (c), todas testadas com resultado correto.
+- [x] **Persisted query respondendo via GET:** Query (a), (b) e (c) validadas via GET, incluindo passagem de variável pela URL.
+- [x] **README explica cada decisão de modelagem:** seção 4 detalha o porquê da enumeração em `dificuldade`, da referência em `instrutor` e do escopo do endpoint.
 
 ---
 
-## 7. Extras (Melhorias Além do Pedido)
+## 7. Extras
 
-1. **Persistência da query com filtro, além da query List**:
-   - Além de persistir apenas a query (a) conforme pedido no critério mínimo, a query (c) com filtro por dificuldade também foi persistida como `lista-aventuras-filter`.
-2. **Validação de variável via parâmetro de URL em GET**:
-   - Confirmado que a variável `$dificuldade` de uma persisted query pode ser sobrescrita diretamente na URL de execução (`;dificuldade=facil`), demonstrando o uso de persisted queries parametrizadas em cenários reais de consumo por cliente (ex.: app mobile filtrando por dificuldade sem reenviar a query completa).
+1. **Persistência das 3 queries, além da query List mínima exigida** — `lista-aventuras`, `lista-aventuras-byPath` e `lista-aventuras-filter` foram todas persistidas, não apenas a query (a).
+2. **Validação de variável via parâmetro de URL em GET** — confirmado que `$dificuldade` de uma persisted query pode ser sobrescrita diretamente na URL de execução, demonstrando uso realista de persisted queries parametrizadas por um cliente (ex.: app mobile filtrando sem reenviar a query inteira).
 
 ---
 
