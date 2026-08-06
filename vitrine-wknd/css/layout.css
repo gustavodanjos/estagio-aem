@@ -1,0 +1,13 @@
+.main-content {
+  flex: 1;
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1.5rem 5rem;
+}
+
+.adventure-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2.2rem;
+}
