@@ -1,0 +1,76 @@
+:root {
+  /* PALETA WKND (Primary Dark & Signal Orange) */
+  --color-primary-dark: #0F172A;
+  --color-primary-darker: #0B1120;
+  --color-primary-surface: #1E293B;
+  
+  --color-signal-orange: #F97316;
+  --color-signal-orange-hover: #EA580C;
+  --color-signal-orange-light: #FFEDD5;
+
+  --color-glacier-white: #F8FAFC;
+  --color-snow-canvas: #FFFFFF;
+  
+  --color-granite-gray: #475569;
+  --color-granite-light: #64748B;
+  --color-granite-muted: #94A3B8;
+
+  --color-border-tech: #E2E8F0;
+  --color-border-hover: #CBD5E1;
+  --color-border-dark: #334155;
+
+  /* NÍVEIS TÉCNICOS (Badges de Dificuldade) */
+  --level-facil: #10B981;
+  --level-facil-bg: #ECFDF5;
+  --level-facil-border: #A7F3D0;
+
+  --level-medio: #D97706;
+  --level-medio-bg: #FFFBEB;
+  --level-medio-border: #FDE68A;
+
+  --level-dificil: #EF4444;
+  --level-dificil-bg: #FEF2F2;
+  --level-dificil-border: #FECACA;
+
+  /* TIPOGRAFIA EDITORIAL & TÉCNICA (Google Fonts) */
+  --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-tech: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ELEVAÇÃO & SOMBRAS (Adventure Card Shadows) */
+  --shadow-card: 0 10px 15px -3px rgba(15, 23, 42, 0.07), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-card-hover: 0 25px 30px -5px rgba(15, 23, 42, 0.15), 0 10px 15px -6px rgba(15, 23, 42, 0.08);
+  --shadow-badge: 0 2px 4px rgba(15, 23, 42, 0.08);
+
+  /* CINEMÁTICA & TRANSFORMAÇÕES TÁTEIS */
+  --transition-tech: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* COMPOSIÇÃO E GRID */
+  --max-width: 1320px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+[data-theme="dark"] {
+  --color-glacier-white: #0B1120;
+  --color-snow-canvas: #0F172A;
+  
+  --color-primary-dark: #F8FAFC;
+  --color-primary-darker: #FFFFFF;
+  --color-primary-surface: #1E293B;
+
+  --color-granite-gray: #94A3B8;
+  
+  --color-border-tech: #1E293B;
+  
+  --level-facil-bg: #022C22;
+  --level-facil-border: #064E3B;
+  
+  --level-medio-bg: #451A03;
+  --level-medio-border: #78350F;
+  
+  --level-dificil-bg: #450A0A;
+  --level-dificil-border: #7F1D1D;
+}
