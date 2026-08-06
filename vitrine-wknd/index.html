@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aventuras WKND — Vitrine Headless (Desafio 8.2)</title>
+  
+  <meta name="description" content="Catálogo de expedições e aventuras da WKND consumindo AEM GraphQL Persisted Queries." />
+  <meta name="theme-color" content="#0F172A" />
+
+  <link rel="preconnect" href="http://localhost:4502" />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+
+  <nav class="topbar">
+    <div class="topbar-inner">
+      <a href="index.html" class="topbar-brand">
+        <span class="brand-highlight">WKND</span> Aventuras
+      </a>
+      
+      <div class="topbar-nav">
+        <a href="index.html" class="nav-link active">Aventuras</a>
+        <a href="instrutores.html" class="nav-link">Instrutores</a>
+      </div>
+
+      <div class="topbar-actions">
+        <div class="search-box">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+          <input type="text" id="search-input" class="search-input" placeholder="Buscar expedição..." aria-label="Buscar expedição" />
+        </div>
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Alternar Tema">
+          <svg id="theme-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" width="20" height="20">
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <aside class="telemetry-bar" role="region" aria-label="Status do Endpoint GraphQL">
+    <div class="telemetry-item">
+      <span class="telemetry-dot dot--online" id="telemetry-dot" title="AEM Author Online"></span>
+      <span class="telemetry-label">AEM GraphQL Endpoint:</span>
+      <code class="telemetry-value" id="telemetry-endpoint">/graphql/execute.json/wknd/lista-aventuras</code>
+    </div>
+    <div class="telemetry-item">
+      <span class="telemetry-label">Filtro Ativo:</span>
+      <strong class="telemetry-value" id="telemetry-status">Todas as Expedições</strong>
+    </div>
+    <div class="telemetry-item">
+      <span class="telemetry-label">Itens:</span>
+      <strong class="telemetry-value" id="telemetry-count">...</strong>
+    </div>
+  </aside>
+
+  <header class="wknd-header">
+    <div class="brand-eyebrow">AEM Headless Explorer</div>
+    <div class="header-title-group">
+      <h1 class="wknd-title">Vitrine WKND Headless</h1>
+      <p class="wknd-subtitle">
+        Experiências e expedições ao ar livre curadas pela WKND. Dados consumidos em tempo real do Adobe Experience Manager através de GraphQL Persisted Queries parametrizadas.
+      </p>
+    </div>
+  </header>
+
+  <nav class="filter-toolbar" aria-label="Filtrar por Nível Técnico">
+    <div class="filter-pills" role="tablist">
+      <button class="filter-btn active" data-level="todos" role="tab" aria-selected="true">
+        Todas as Expedições
+      </button>
+      <button class="filter-btn" data-level="facil" role="tab" aria-selected="false">
+        Expedição • Fácil
+      </button>
+      <button class="filter-btn" data-level="medio" role="tab" aria-selected="false">
+        Expedição • Médio
+      </button>
+      <button class="filter-btn" data-level="dificil" role="tab" aria-selected="false">
+        Expedição • Difícil
+      </button>
+    </div>
+  </nav>
+
+  <main class="main-content">
+    <div id="demo-banner-container" aria-live="polite"></div>
+    <section id="hero-banner-container" aria-label="Aventura em Destaque"></section>
+    
+    <section id="adventures-section" aria-label="Listagem de Aventuras">
+      <div id="adventure-grid" class="adventure-grid-layout" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <footer class="wknd-footer">
+    <div class="footer-inner">
+      <div>
+        <strong class="footer-tech-tag">WKND • Adobe Experience Manager</strong>
+        <span> — Programa de Estágio AEM (Webjump)</span>
+      </div>
+      <div>
+        <span>Desafio 8.2 • Vitrine WKND Headless</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="modal-root"></div>
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>
