@@ -11,8 +11,10 @@ public class AdventureCard implements OmnichannelCard {
     private Double price;
     private String difficulty;
     private String guideName;
+    @com.fasterxml.jackson.annotation.JsonIgnore
+    private long rawDate;
 
-    public AdventureCard(String title, String path, String imagePath, String description, String lastModified, Double price, String difficulty, String guideName) {
+    public AdventureCard(String title, String path, String imagePath, String description, String lastModified, Double price, String difficulty, String guideName, long rawDate) {
         this.title = title;
         this.path = path;
         this.imagePath = imagePath;
@@ -21,6 +23,7 @@ public class AdventureCard implements OmnichannelCard {
         this.price = price;
         this.difficulty = difficulty;
         this.guideName = guideName;
+        this.rawDate = rawDate;
     }
 
     @Override
@@ -72,5 +75,10 @@ public class AdventureCard implements OmnichannelCard {
     @Override
     public String getGuideName() {
         return guideName;
+    }
+
+    @Override
+    public long getRawDate() {
+        return rawDate;
     }
 }
