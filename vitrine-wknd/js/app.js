@@ -1,5 +1,5 @@
 import { CONFIG } from './config.js';
-import { fetchAdventures } from './api.js';
+import { fetchAdventures, fetchMagazineArticles } from './api.js';
 import { initTheme } from './utils/theme.js';
 import { 
   updateTelemetry, 
@@ -142,6 +142,57 @@ function initializeApp() {
   }
 
   loadAdventures(initialLevel, false);
+  loadMagazineBlock();
+}
+
+async function loadMagazineBlock() {
+  const container = document.getElementById('magazine-grid');
+  if (!container) return;
+  
+  container.innerHTML = '<div class="spinner-tech"></div>';
+  
+  try {
+    const items = await fetchMagazineArticles();
+    const articles = items.filter(item => item.type === 'MATERIA' || !item.type);
+    
+    if (articles.length === 0) {
+      container.innerHTML = `
+        <div class="state-container" role="status" style="grid-column: 1 / -1;">
+          <div class="state-icon">📰</div>
+          <h2 class="state-title">Nenhuma matéria</h2>
+          <p class="state-desc">Ainda não há publicações exclusivas do portal WKND no momento.</p>
+        </div>`;
+      return;
+    }
+    
+    const fallbackImage = 'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=800&h=500&q=80';
+    
+    const htmlCards = articles.map(item => `
+      <article class="adventure-card">
+        <figure class="card-figure">
+          <span class="badge-level badge--materia">MATÉRIA</span>
+          <img src="${fallbackImage}" data-aem-src="${item.imagePath || ''}" class="card-img" alt="${item.title || ''}" loading="lazy"/>
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">${item.title}</h2>
+          <p class="card-desc">${item.description || ''}</p>
+        </div>
+        <footer class="guide-footer guide-footer--end">
+          <a href="${item.path ? (item.path.startsWith('/content/') ? CONFIG.AEM_HOST + item.path : item.path) : '#'}" target="_blank" rel="noopener noreferrer" class="btn-details">Ler Matéria &rarr;</a>
+        </footer>
+      </article>
+    `).join('');
+    
+    container.innerHTML = htmlCards;
+    hydrateAemImages();
+  } catch (error) {
+    container.innerHTML = `
+      <div class="state-container" role="alert" style="grid-column: 1 / -1;">
+        <div class="state-icon">📡</div>
+        <h2 class="state-title">Falha no Endpoint AEM (Revista)</h2>
+        <p class="state-desc">${error.message}</p>
+      </div>`;
+  }
 }
 
 if (document.readyState === 'loading') {
