@@ -1,0 +1,123 @@
+.topbar {
+  background-color: var(--color-snow-canvas);
+  border-bottom: 1px solid var(--color-border-tech);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 1rem 1.5rem;
+  transition: var(--transition-tech);
+}
+
+.topbar-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.topbar-brand {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--color-primary-dark);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brand-highlight {
+  background-color: var(--color-signal-orange);
+  color: #FFF;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.nav-link {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-granite-gray);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--color-signal-orange);
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  font-family: var(--font-body);
+  background-color: var(--color-glacier-white);
+  border: 1px solid var(--color-border-tech);
+  padding: 0.5rem 1rem 0.5rem 2.5rem;
+  border-radius: 20px;
+  color: var(--color-primary-dark);
+  outline: none;
+  transition: var(--transition-fast);
+  width: 250px;
+}
+
+.search-input:focus {
+  border-color: var(--color-signal-orange);
+  box-shadow: 0 0 0 3px var(--color-signal-orange-light);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.8rem;
+  color: var(--color-granite-muted);
+  width: 16px;
+  height: 16px;
+  pointer-events: none;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: 1px solid var(--color-border-tech);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-granite-gray);
+  transition: var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  background-color: var(--color-glacier-white);
+  color: var(--color-primary-dark);
+}
+
+@media (max-width: 768px) {
+  .topbar-nav {
+    display: none;
+  }
+  .search-input {
+    width: 100%;
+  }
+}

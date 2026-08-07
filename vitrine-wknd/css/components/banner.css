@@ -1,0 +1,32 @@
+.demo-banner {
+  grid-column: 1 / -1;
+  background-color: #FFF7ED;
+  border: 1px solid #FDBA74;
+  border-left: 4px solid #F97316;
+  border-radius: var(--radius-md);
+  padding: 1.1rem 1.4rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #0F172A;
+  box-shadow: 0 4px 6px -1px rgba(15, 23, 42, 0.05);
+}
+
+.demo-banner-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.demo-banner-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.94rem;
+}
+
+.demo-banner-text strong {
+  font-family: var(--font-display);
+  font-weight: 700;
+  color: #9A3412;
+}
