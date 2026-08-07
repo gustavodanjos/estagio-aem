@@ -11,3 +11,28 @@
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2.2rem;
 }
+
+.magazine-section {
+  margin-top: 4rem;
+}
+
+.magazine-header {
+  text-align: left;
+  padding: 0 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto 2rem;
+}
+
+.magazine-header .wknd-title {
+  font-size: 2rem;
+}
+
+.magazine-header .wknd-subtitle {
+  margin: 0;
+}
+
+.magazine-grid-wrapper {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}

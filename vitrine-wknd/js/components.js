@@ -103,7 +103,7 @@ export function renderErrorState(error) {
       <h2 class="state-title">Falha no Endpoint AEM GraphQL</h2>
       <p class="state-desc">
         Não foi possível restabelecer a telemetria com <code>${CONFIG.AEM_HOST}</code>.<br/>
-        <small style="color: var(--color-signal-orange); font-family: var(--font-tech); display: block; margin-top: 0.5rem;">
+        <small class="state-error-message">
           ERRO: ${error.message || 'CORS ou Servidor Indisponível'}
         </small>
       </p>
@@ -162,8 +162,8 @@ export function renderModal(item) {
     if (specialties.length > 0) {
       const badges = specialties.map(s => `<span class="badge-level badge--facil">${s}</span>`).join('');
       specialtiesHtml = `
-        <div class="modal-specialties" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
-          <span style="font-size: 0.8rem; color: var(--color-granite-muted); text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; margin-right: 0.5rem;">Especialidades:</span>
+        <div class="modal-specialties">
+          <span class="modal-specialties-label">Especialidades:</span>
           ${badges}
         </div>
       `;
@@ -205,8 +205,8 @@ export function renderInstructorCard(item) {
   const badges = specialties.map(s => `<span class="badge-level badge--medio">${s}</span>`).join('');
   
   return `
-    <article class="adventure-card instructor-card" style="align-items: center; text-align: center; padding-bottom: 1.5rem;">
-      <figure class="card-figure" style="width: 120px; height: 120px; border-radius: 50%; margin: 2rem auto 0; border: 3px solid var(--color-signal-orange); overflow: hidden; aspect-ratio: auto;">
+    <article class="adventure-card instructor-card">
+      <figure class="card-figure">
         <img 
           src="${fallbackImage}" 
           data-aem-src="${imgUrl}" 
@@ -217,14 +217,14 @@ export function renderInstructorCard(item) {
           loading="lazy" 
         />
       </figure>
-      <div class="card-body" style="padding-top: 1rem;">
+      <div class="card-body">
         <h2 class="card-title">${name}</h2>
-        <span class="guide-exp" style="display: inline-block; margin-top: 0.5rem;" title="Anos de experiência comprovada">${exp}</span>
-        <div class="instructor-badges" style="display: flex; justify-content: center; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;">
+        <span class="guide-exp" title="Anos de experiência comprovada">${exp}</span>
+        <div class="instructor-badges">
           ${badges}
         </div>
       </div>
-      <button class="btn-details" style="margin: 0 auto; margin-top: auto;" onclick="window.openModal('${item._id || item.nome}')">Ver detalhes &rarr;</button>
+      <button class="btn-details" onclick="window.openModal('${item._id || item.nome}')">Ver detalhes &rarr;</button>
     </article>
   `;
 }

@@ -10,36 +10,88 @@
     </div>
 
     <sly data-sly-test="${!model.empty}">
+        
         <header class="wknd-ultimas-magazine__header">
             <h2 id="wknd-ultimas-magazine-heading" class="wknd-ultimas-magazine__title">Últimas do Magazine</h2>
         </header>
 
         <ul class="wknd-ultimas-magazine__grid wknd-ultimas-magazine__grid--cols-${model.columns}" role="list">
-            <li class="wknd-ultimas-magazine__item" data-sly-repeat.article="${model.articles}">
-                <article class="wknd-magazine-card" aria-labelledby="card-title-${articleList.index}">
-                    <figure class="wknd-magazine-card__image-container">
-                        <img class="wknd-magazine-card__image" src="${article.imagePath}" alt="${article.title}" loading="lazy"/>
-                        <span class="wknd-magazine-card__badge" role="status" aria-label="Artigo recente">RECENTE</span>
-                    </figure>
+            <sly data-sly-list.article="${model.articles}">
+                <li class="wknd-ultimas-magazine__item" data-sly-test="${article.type == 'MATERIA'}">
+                    <article class="wknd-magazine-card" aria-labelledby="card-title-${articleList.index}">
+                        <figure class="wknd-magazine-card__image-container">
+                            <img class="wknd-magazine-card__image" src="${article.imagePath}" alt="${article.title}" loading="lazy"/>
+                            <span class="wknd-magazine-card__badge" role="status" aria-label="Artigo">MATÉRIA</span>
+                        </figure>
 
-                    <div class="wknd-magazine-card__content">
-                        <header class="wknd-magazine-card__header">
-                            <h3 id="card-title-${articleList.index}" class="wknd-magazine-card__title">${article.title}</h3>
-                        </header>
+                        <div class="wknd-magazine-card__content">
+                            <header class="wknd-magazine-card__header">
+                                <h3 id="card-title-${articleList.index}" class="wknd-magazine-card__title">${article.title}</h3>
+                            </header>
 
-                        <p class="wknd-magazine-card__description" data-sly-test="${article.description}">${article.description}</p>
+                            <div class="wknd-magazine-card__description" data-sly-test="${article.description}" style="margin: 0 0 1.5rem 0; font-size: 0.925rem; line-height: 1.6; color: var(--wknd-mag-secondary); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${article.description @ context='html'}</div>
 
-                        <footer class="wknd-magazine-card__footer">
-                            <time class="wknd-magazine-card__date" data-sly-test="${article.lastModified}" datetime="${article.lastModified}">${article.lastModified}</time>
-                            <a class="wknd-magazine-card__link" href="${article.path}" aria-label="Ler matéria completa: ${article.title}">
-                                <span>Ler Matéria</span>
-                                <span class="wknd-magazine-card__arrow" aria-hidden="true">→</span>
-                            </a>
-                        </footer>
-                    </div>
-                </article>
-            </li>
+                            <footer class="wknd-magazine-card__footer">
+                                <time class="wknd-magazine-card__date" data-sly-test="${article.lastModified}" datetime="${article.lastModified}">${article.lastModified}</time>
+                                <a class="wknd-magazine-card__link" href="${article.path}" aria-label="Acessar ${article.title}">
+                                    Ler Matéria
+                                    <span class="wknd-magazine-card__arrow" aria-hidden="true">→</span>
+                                </a>
+                            </footer>
+                        </div>
+                    </article>
+                </li>
+            </sly>
         </ul>
+
+        <header class="wknd-ultimas-magazine__header" style="margin-top: 4rem;">
+            <h2 id="wknd-aventuras-heading" class="wknd-ultimas-magazine__title">Aventuras Recentes</h2>
+        </header>
+
+        <ul class="wknd-ultimas-magazine__grid wknd-ultimas-magazine__grid--cols-${model.columns}" role="list">
+            <sly data-sly-list.article="${model.articles}">
+                <li class="wknd-ultimas-magazine__item" data-sly-test="${article.type == 'AVENTURA'}">
+                    <article class="wknd-magazine-card" aria-labelledby="card-title-adv-${articleList.index}">
+                        <figure class="wknd-magazine-card__image-container">
+                            <img class="wknd-magazine-card__image" src="${article.imagePath}" alt="${article.title}" loading="lazy"/>
+                            <span class="wknd-magazine-card__badge wknd-magazine-card__badge--aventura" role="status" aria-label="Aventura">AVENTURA</span>
+                        </figure>
+
+                        <div class="wknd-magazine-card__content">
+                            <header class="wknd-magazine-card__header">
+                                <h3 id="card-title-adv-${articleList.index}" class="wknd-magazine-card__title">${article.title}</h3>
+                            </header>
+
+                            <div class="wknd-magazine-card__description" data-sly-test="${article.description}" style="margin: 0 0 1.5rem 0; font-size: 0.925rem; line-height: 1.6; color: var(--wknd-mag-secondary); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${article.description @ context='html'}</div>
+
+                            <div class="wknd-magazine-card__adventure-info">
+                                <div class="wknd-adventure-spec">
+                                    <span class="wknd-adventure-spec__label">Nível</span>
+                                    <span class="wknd-adventure-spec__value wknd-adventure-spec__value--${article.difficulty}">${article.difficulty}</span>
+                                </div>
+                                <div class="wknd-adventure-spec">
+                                    <span class="wknd-adventure-spec__label">Investimento</span>
+                                    <span class="wknd-adventure-spec__value wknd-adventure-spec__value--price">${article.priceFormatted}</span>
+                                </div>
+                                <div class="wknd-adventure-spec wknd-adventure-spec--full" data-sly-test="${article.guideName}">
+                                    <span class="wknd-adventure-spec__label">Guia Especialista</span>
+                                    <span class="wknd-adventure-spec__value">${article.guideName}</span>
+                                </div>
+                            </div>
+
+                            <footer class="wknd-magazine-card__footer">
+                                <time class="wknd-magazine-card__date" data-sly-test="${article.lastModified}" datetime="${article.lastModified}">${article.lastModified}</time>
+                                <a class="wknd-magazine-card__link" href="${article.path}" aria-label="Acessar ${article.title}">
+                                    Ver Aventura
+                                    <span class="wknd-magazine-card__arrow" aria-hidden="true">→</span>
+                                </a>
+                            </footer>
+                        </div>
+                    </article>
+                </li>
+            </sly>
+        </ul>
+
     </sly>
 
 </section>

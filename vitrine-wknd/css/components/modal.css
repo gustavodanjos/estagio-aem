@@ -129,6 +129,23 @@
   color: var(--color-primary-dark);
 }
 
+.modal-specialties {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.modal-specialties-label {
+  font-size: 0.8rem;
+  color: var(--color-granite-light);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  margin-right: 0.5rem;
+}
+
 .prose p {
   margin-bottom: 1rem;
   line-height: 1.6;

@@ -104,12 +104,13 @@ export function updateFilterButtons(activeLevel) {
 export async function hydrateAemImages() {
   const imgs = document.querySelectorAll('img[data-aem-src]');
   imgs.forEach((img) => {
-    const assetUrl = img.getAttribute('data-aem-src');
+    let assetUrl = img.getAttribute('data-aem-src');
     if (!assetUrl) return;
     
-    // O fetch no AEM via localhost aciona erros severos no console do Chrome devido ao CORS.
-    // Usamos o carregamento nativo (img.src) diretamente, o que contorna o preflight do CORS
-    // e aproveita a sessão de cookie ativa no navegador do usuário automaticamente.
+    if (assetUrl.startsWith('/content/')) {
+      assetUrl = CONFIG.AEM_HOST + assetUrl;
+    }
+   
     const originalSrc = img.src;
     img.onerror = () => { img.src = originalSrc; };
     img.src = assetUrl;
@@ -117,8 +118,12 @@ export async function hydrateAemImages() {
 
   const bgs = document.querySelectorAll('[data-aem-bg]');
   bgs.forEach((el) => {
-    const assetUrl = el.getAttribute('data-aem-bg');
+    let assetUrl = el.getAttribute('data-aem-bg');
     if (!assetUrl) return;
+
+    if (assetUrl.startsWith('/content/')) {
+      assetUrl = CONFIG.AEM_HOST + assetUrl;
+    }
 
     el.style.backgroundImage = `url('${assetUrl}')`;
   });

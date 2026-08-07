@@ -1,84 +1,80 @@
 package com.adobe.aem.guides.wknd.core.models.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+public class AdventureCard implements OmnichannelCard {
 
-public class MagazineArticle implements OmnichannelCard {
-
-    @JsonProperty("title")
     private String title;
-
-    @JsonProperty("path")
     private String path;
-
-    @JsonProperty("imagePath")
     private String imagePath;
-
-    @JsonProperty("description")
     private String description;
-
-    @JsonProperty("lastModified")
     private String lastModified;
-
+    private String type = "AVENTURA";
+    private Double price;
+    private String difficulty;
+    private String guideName;
     @com.fasterxml.jackson.annotation.JsonIgnore
     private long rawDate;
 
-    private String type = "MATERIA";
-
-    public MagazineArticle() {
-    }
-
-    public MagazineArticle(String title, String path, String imagePath, String description, String lastModified, long rawDate) {
+    public AdventureCard(String title, String path, String imagePath, String description, String lastModified, Double price, String difficulty, String guideName, long rawDate) {
         this.title = title;
         this.path = path;
         this.imagePath = imagePath;
         this.description = description;
         this.lastModified = lastModified;
+        this.price = price;
+        this.difficulty = difficulty;
+        this.guideName = guideName;
         this.rawDate = rawDate;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
+    @Override
     public String getPath() {
         return path;
     }
 
-    public void setPath(String path) {
-        this.path = path;
-    }
-
+    @Override
     public String getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
+    @Override
     public String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
+    @Override
     public String getLastModified() {
         return lastModified;
-    }
-
-    public void setLastModified(String lastModified) {
-        this.lastModified = lastModified;
     }
 
     @Override
     public String getType() {
         return type;
+    }
+
+    @Override
+    public Double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String getPriceFormatted() {
+        if (price == null) return "$0.00";
+        return String.format(java.util.Locale.US, "$%.2f", price);
+    }
+
+    @Override
+    public String getDifficulty() {
+        return difficulty;
+    }
+
+    @Override
+    public String getGuideName() {
+        return guideName;
     }
 
     @Override

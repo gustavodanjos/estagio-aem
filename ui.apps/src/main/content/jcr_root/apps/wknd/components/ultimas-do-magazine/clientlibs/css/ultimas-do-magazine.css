@@ -134,21 +134,91 @@
     transform: scale(1.07);
 }
 
-/* Etiqueta RECENTE */
 .wknd-magazine-card__badge {
     position: absolute;
     top: 1rem;
     left: 1rem;
-    background: var(--wknd-mag-badge-bg);
-    color: var(--wknd-mag-badge-color);
-    font-size: 0.75rem;
+    background: rgba(15, 23, 42, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 0.65rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 0.35rem 0.75rem;
-    border-radius: 9999px;
-    box-shadow: 0 4px 10px rgba(217, 119, 6, 0.35);
+    letter-spacing: 0.1em;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     z-index: 2;
     text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.wknd-magazine-card__badge::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #3b82f6;
+    box-shadow: 0 0 8px #3b82f6;
+}
+
+.wknd-magazine-card__badge--aventura {
+    
+}
+
+.wknd-magazine-card__badge--aventura::before {
+    background: #10b981;
+    box-shadow: 0 0 8px #10b981;
+}
+
+/* Informações da Aventura */
+.wknd-magazine-card__adventure-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+    margin: 0 0 1.5rem 0;
+    padding: 1rem;
+    background: linear-gradient(145deg, #f8fafc, #f1f5f9);
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+}
+
+.wknd-adventure-spec {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.wknd-adventure-spec--full {
+    grid-column: 1 / -1;
+    border-top: 1px dashed #cbd5e1;
+    padding-top: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+.wknd-adventure-spec__label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    font-weight: 700;
+}
+
+.wknd-adventure-spec__value {
+    font-size: 0.9rem;
+    color: #0f172a;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.wknd-adventure-spec__value--price {
+    color: #2563eb;
+    font-size: 1.1rem;
+    font-weight: 800;
 }
 
 /* Conteúdo */
@@ -287,6 +357,32 @@
     border-top-color: #334155;
 }
 
+.wknd-ultimas-magazine--escuro .wknd-magazine-card__adventure-info,
+.cmp-ultimas-magazine--escuro .wknd-magazine-card__adventure-info {
+    background: linear-gradient(145deg, #1e293b, #0f172a);
+    border-color: #334155;
+}
+
+.wknd-ultimas-magazine--escuro .wknd-adventure-spec__label,
+.cmp-ultimas-magazine--escuro .wknd-adventure-spec__label {
+    color: #94a3b8;
+}
+
+.wknd-ultimas-magazine--escuro .wknd-adventure-spec__value,
+.cmp-ultimas-magazine--escuro .wknd-adventure-spec__value {
+    color: #f8fafc;
+}
+
+.wknd-ultimas-magazine--escuro .wknd-adventure-spec__value--price,
+.cmp-ultimas-magazine--escuro .wknd-adventure-spec__value--price {
+    color: #3b82f6;
+}
+
+.wknd-ultimas-magazine--escuro .wknd-adventure-spec--full,
+.cmp-ultimas-magazine--escuro .wknd-adventure-spec--full {
+    border-top-color: #334155;
+}
+
 .wknd-ultimas-magazine--escuro .wknd-ultimas-magazine__empty,
 .cmp-ultimas-magazine--escuro .wknd-ultimas-magazine__empty {
     background: #0f172a;
@@ -304,6 +400,22 @@
         border-bottom-color: #334155;
     }
     .wknd-magazine-card__footer {
+        border-top-color: #334155;
+    }
+    .wknd-magazine-card__adventure-info {
+        background: linear-gradient(145deg, #1e293b, #0f172a);
+        border-color: #334155;
+    }
+    .wknd-adventure-spec__label {
+        color: #94a3b8;
+    }
+    .wknd-adventure-spec__value {
+        color: #f8fafc;
+    }
+    .wknd-adventure-spec__value--price {
+        color: #3b82f6;
+    }
+    .wknd-adventure-spec--full {
         border-top-color: #334155;
     }
     .wknd-ultimas-magazine__empty {

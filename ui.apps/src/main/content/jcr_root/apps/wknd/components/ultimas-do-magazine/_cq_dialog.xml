@@ -63,6 +63,25 @@
                                                     <col6 jcr:primaryType="nt:unstructured" text="6 Colunas" value="6"/>
                                                 </items>
                                             </gridColumns>
+                                            <adventuresPath
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/pathfield"
+                                                fieldLabel="Pasta Raiz das Aventuras"
+                                                fieldDescription="Selecione a pasta do AEM onde estão os Content Fragments de Aventuras (ex.: /content/dam/wknd)."
+                                                name="./adventuresPath"
+                                                rootPath="/content/dam"
+                                                required="{Boolean}true"/>
+                                            <maxAdventures
+                                                jcr:primaryType="nt:unstructured"
+                                                sling:resourceType="granite/ui/components/coral/foundation/form/numberfield"
+                                                fieldLabel="Quantidade de Aventuras Exibidas"
+                                                fieldDescription="Defina quantas aventuras recentes devem aparecer misturadas aos artigos (padrão: 2)."
+                                                name="./maxAdventures"
+                                                defaultValue="2"
+                                                value="2"
+                                                min="0"
+                                                max="6"
+                                                step="1"/>
                                         </items>
                                     </column>
                                 </items>

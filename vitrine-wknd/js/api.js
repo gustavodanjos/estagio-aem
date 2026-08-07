@@ -115,6 +115,47 @@ export async function fetchInstructors() {
   }
 }
 
+export async function fetchMagazineArticles() {
+  const url = `${CONFIG.AEM_HOST}${CONFIG.QUERIES.MAGAZINE}`;
+
+  try {
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Authorization': CONFIG.AUTH_HEADER,
+        'Accept': 'application/json'
+      }
+    });
+
+    if (!response.ok) {
+      throw new Error(`Erro HTTP ${response.status}: ${response.statusText}`);
+    }
+
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('text/html')) {
+      throw new Error("O AEM retornou uma página HTML em vez de JSON. Verifique se o caminho 'MAGAZINE' no config.js está apontando para o nó correto do componente.");
+    }
+
+    const payload = await response.json();
+    
+    if (Array.isArray(payload)) {
+      return payload;
+    } else if (payload.articles && Array.isArray(payload.articles)) {
+      return payload.articles;
+    }
+    
+    return [];
+  } catch (error) {
+    if (CONFIG.DEMO_IF_OFFLINE) {
+      console.warn('Fallback para mock de matérias (Revista)');
+      return [
+        { type: 'MATERIA', title: 'O Retorno de Chick Hicks', path: '#', imagePath: '', description: 'Mock fallback para offline', lastModified: '01/01/2026' }
+      ];
+    }
+    throw error;
+  }
+}
+
 export async function fetchImageBlob(assetUrl) {
   const response = await fetch(assetUrl, {
     method: 'GET',
