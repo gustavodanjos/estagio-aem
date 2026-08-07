@@ -19,17 +19,21 @@ public class MagazineArticle implements OmnichannelCard {
     @JsonProperty("lastModified")
     private String lastModified;
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
+    private long rawDate;
+
     private String type = "MATERIA";
 
     public MagazineArticle() {
     }
 
-    public MagazineArticle(String title, String path, String imagePath, String description, String lastModified) {
+    public MagazineArticle(String title, String path, String imagePath, String description, String lastModified, long rawDate) {
         this.title = title;
         this.path = path;
         this.imagePath = imagePath;
         this.description = description;
         this.lastModified = lastModified;
+        this.rawDate = rawDate;
     }
 
     public String getTitle() {
@@ -75,5 +79,10 @@ public class MagazineArticle implements OmnichannelCard {
     @Override
     public String getType() {
         return type;
+    }
+
+    @Override
+    public long getRawDate() {
+        return rawDate;
     }
 }
