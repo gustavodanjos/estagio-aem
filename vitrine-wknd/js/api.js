@@ -131,6 +131,11 @@ export async function fetchMagazineArticles() {
       throw new Error(`Erro HTTP ${response.status}: ${response.statusText}`);
     }
 
+    const contentType = response.headers.get('content-type');
+    if (contentType && contentType.includes('text/html')) {
+      throw new Error("O AEM retornou uma página HTML em vez de JSON. Verifique se o caminho 'MAGAZINE' no config.js está apontando para o nó correto do componente.");
+    }
+
     const payload = await response.json();
     
     if (Array.isArray(payload)) {
