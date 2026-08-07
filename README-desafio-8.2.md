@@ -352,14 +352,29 @@ Abaixo, documentação comprobatória da integração em perfeito estado.
 > *Legenda: Print demonstrando as elevadas notas no Lighthouse, puxadas pelos hacks de Preload Image, design moderno limpo, tags semânticas e arquitetura sem dependências pesadas.*
 > <img width="1859" height="928" alt="lighthouse-8 2" src="https://github.com/user-attachments/assets/91ceddc0-ca55-4998-b2e6-42789a4fddf6" />
 
+### 10.7 Retornos das Requisições HTTP
 
-### 10.7 Comprovação do Ciclo Editar ➔ Publicar ➔ Refletir
+> *Legenda: Prints evidenciando o uso das requisições consumindo os endpoints via método GET e com respostas positivas (200 ok)*
+
+> <img width="1860" height="928" alt="image" src="https://github.com/user-attachments/assets/9b156f1b-719b-4f4a-af0a-e5713a96ef04" />
+
+> <img width="1860" height="928" alt="image" src="https://github.com/user-attachments/assets/304d505d-357a-4f57-81e6-28b76a8f5867" />
+
+### 10.8 Exibição do Frontend Mobile
+
+> *Legenda: Exibição Mobile visando evidenciar a preocupação e utilização dos princípios de responsividade (mobile-first)*
+
+> <img width="436" height="846" alt="image" src="https://github.com/user-attachments/assets/9be0365e-5e49-43df-9077-8fb3bc5b79d2" />
+> <img width="436" height="846" alt="image" src="https://github.com/user-attachments/assets/eab6561d-c5ab-4227-ad75-18a6fac342bd" />
+ 
+
+### 10.9 Comprovação do Ciclo Editar ➔ Publicar ➔ Refletir
 
 > *Legenda:  Alteração de um dado real no Content Fragment dentro do AEM Author (ex: nome de uma aventura ou instrutor). → A atualização sendo refletida de forma imediata e dinâmica na nossa vitrine frontend.*
 
 > [atualização-nomes.webm](https://github.com/user-attachments/assets/637a7f32-bf93-4244-9a32-385404bb9bff)
 
-### 10.8 Demonstração Final
+### 10.10 Demonstração Final
 > *Legenda: Vídeo demonstrando todo fluxo do site para o desafio 8.2 e evidenciando os Content Fragments do AEM*
 
 > https://github.com/user-attachments/assets/931fde2d-5ee1-4431-93b7-2c6704291b6e
