@@ -187,10 +187,15 @@ async function loadMagazineBlock() {
     hydrateAemImages();
   } catch (error) {
     container.innerHTML = `
-      <div class="state-container" role="alert" style="grid-column: 1 / -1;">
+      <div class="state-container" id="error-state" role="alert" style="grid-column: 1 / -1;">
         <div class="state-icon">📡</div>
-        <h2 class="state-title">Falha no Endpoint AEM (Revista)</h2>
-        <p class="state-desc">${error.message}</p>
+        <h2 class="state-title">Falha no Endpoint AEM Sling Exporter</h2>
+        <p class="state-desc">
+          Não foi possível restabelecer a telemetria com <code>.ultimas.json</code>.<br/>
+          <small class="state-error-message">
+            ERRO: ${error.message || 'CORS ou Servidor Indisponível'}
+          </small>
+        </p>
       </div>`;
   }
 }
