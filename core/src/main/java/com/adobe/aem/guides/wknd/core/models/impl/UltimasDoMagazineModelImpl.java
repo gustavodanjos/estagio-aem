@@ -56,6 +56,7 @@ public class UltimasDoMagazineModelImpl implements UltimasDoMagazineModel {
 
     public static final String RESOURCE_TYPE = "wknd/components/ultimas-do-magazine";
     private static final String DEFAULT_ROOT_PATH = "/content/wknd/us/en";
+    private static final String DEFAULT_IMAGE = "/content/dam/wknd/en/magazine/adventure-placeholder.jpeg";
 
     @OSGiService
     private QueryBuilder queryBuilder;
@@ -119,17 +120,23 @@ public class UltimasDoMagazineModelImpl implements UltimasDoMagazineModel {
                         String title = getArticleTitle(page);
                         String path = page.getPath() + ".html";
                         String imagePath = extractImagePath(page);
+                        if (imagePath == null || imagePath.trim().isEmpty()) {
+                            imagePath = DEFAULT_IMAGE;
+                        }
+                        
                         String description = isBlank(page.getDescription())
                                 ? "Artigo recente do Magazine WKND."
                                 : page.getDescription();
 
                         String lastModifiedStr = "";
+                        long rawDate = 0;
                         Calendar lastMod = page.getLastModified();
                         if (lastMod != null) {
                             lastModifiedStr = dateFormat.format(lastMod.getTime());
+                            rawDate = lastMod.getTimeInMillis();
                         }
 
-                        MagazineArticle article = new MagazineArticle(title, path, imagePath, description, lastModifiedStr);
+                        MagazineArticle article = new MagazineArticle(title, path, imagePath, description, lastModifiedStr, rawDate);
                         articles.add(article);
                     }
                 }
@@ -143,6 +150,9 @@ public class UltimasDoMagazineModelImpl implements UltimasDoMagazineModel {
             Map<String, String> advPredicateMap = createAdventurePredicateMap();
             Query advQuery = queryBuilder.createQuery(PredicateGroup.create(advPredicateMap), session);
             SearchResult advResult = advQuery.getResult();
+            java.util.List<java.util.Map<String, Object>> advList = new java.util.ArrayList<>();
+            java.util.Set<String> instructorPaths = new java.util.HashSet<>();
+            
             for (Hit hit : advResult.getHits()) {
                 try {
                     Resource hitResource = hit.getResource();
@@ -171,42 +181,83 @@ public class UltimasDoMagazineModelImpl implements UltimasDoMagazineModel {
                             }
                             
                             String imagePath = vm.get("imagem", String.class);
-                            if (imagePath == null) imagePath = "";
+                            if (imagePath == null || imagePath.trim().isEmpty()) {
+                                imagePath = DEFAULT_IMAGE;
+                            }
                             
-                            String path = "#"; // Não tenta abrir Content Fragment como página html
-                            
-                            String guideName = "Guia WKND";
                             String instructorPath = vm.get("instrutor", String.class);
-                            if (instructorPath != null && resourceResolver != null) {
-                                Resource guideResource = resourceResolver.getResource(instructorPath);
-                                if (guideResource != null) {
-                                    Resource guideMaster = guideResource.getChild("jcr:content/data/master");
-                                    if (guideMaster != null) {
-                                        String nome = guideMaster.getValueMap().get("nome", String.class);
-                                        if (nome != null && !nome.isEmpty()) guideName = nome;
-                                    }
-                                }
+                            if (instructorPath != null) {
+                                instructorPaths.add(instructorPath);
                             }
                             
                             // Obter ultima modificacao do asset
                             String lastModifiedStr = "";
+                            long rawDate = 0;
                             Resource jcrContent = hitResource.getChild("jcr:content");
                             if (jcrContent != null) {
                                 Calendar lastMod = jcrContent.getValueMap().get("jcr:lastModified", Calendar.class);
                                 if (lastMod != null) {
                                     lastModifiedStr = new SimpleDateFormat("dd/MM/yyyy").format(lastMod.getTime());
+                                    rawDate = lastMod.getTimeInMillis();
                                 }
                             }
                             
-                            AdventureCard adv = new AdventureCard(title, path, imagePath, description, lastModifiedStr, price, difficulty, guideName);
-                            articles.add(adv);
+                            java.util.Map<String, Object> advData = new java.util.HashMap<>();
+                            advData.put("title", title);
+                            advData.put("description", description);
+                            advData.put("difficulty", difficulty);
+                            advData.put("price", price);
+                            advData.put("imagePath", imagePath);
+                            advData.put("instructorPath", instructorPath);
+                            advData.put("lastModifiedStr", lastModifiedStr);
+                            advData.put("rawDate", rawDate);
+                            
+                            advList.add(advData);
                         }
                     }
                 } catch (Exception e) {
                     LOG.error("Erro ao processar hit de Aventura", e);
                 }
             }
+            
+            // Resolve instrutores em lote (soluciona N+1)
+            java.util.Map<String, String> instructorNames = new java.util.HashMap<>();
+            if (resourceResolver != null) {
+                for (String p : instructorPaths) {
+                    Resource guideResource = resourceResolver.getResource(p);
+                    if (guideResource != null) {
+                        Resource guideMaster = guideResource.getChild("jcr:content/data/master");
+                        if (guideMaster != null) {
+                            String nome = guideMaster.getValueMap().get("nome", String.class);
+                            if (nome != null && !nome.isEmpty()) {
+                                instructorNames.put(p, nome);
+                            }
+                        }
+                    }
+                }
+            }
+            
+            for (java.util.Map<String, Object> data : advList) {
+                String ip = (String) data.get("instructorPath");
+                String guideName = (ip != null && instructorNames.containsKey(ip)) ? instructorNames.get(ip) : "Guia WKND";
+                
+                AdventureCard adv = new AdventureCard(
+                        (String) data.get("title"),
+                        "#", 
+                        (String) data.get("imagePath"),
+                        (String) data.get("description"),
+                        (String) data.get("lastModifiedStr"),
+                        (Double) data.get("price"),
+                        (String) data.get("difficulty"),
+                        guideName,
+                        (Long) data.get("rawDate")
+                );
+                articles.add(adv);
+            }
         }
+        
+        // Ordenacao mesclada por data
+        articles.sort((a, b) -> Long.compare(b.getRawDate(), a.getRawDate()));
     }
 
     private PageManager getPageManagerSafe() {
