@@ -74,6 +74,27 @@
   border-color: var(--level-dificil-border);
 }
 
+.badge--materia {
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-size: 0.65rem;
+}
+
+.badge--materia::before {
+  content: '';
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3b82f6;
+  box-shadow: 0 0 8px #3b82f6;
+}
+
 .card-body {
   padding: 1.6rem 1.6rem 1.2rem;
   display: flex;
@@ -131,6 +152,11 @@
   gap: 1rem;
 }
 
+.guide-footer--end {
+  padding: 1.5rem;
+  justify-content: flex-end;
+}
+
 .guide-info {
   display: flex;
   align-items: center;
@@ -180,9 +206,49 @@
   display: flex;
   align-items: center;
   gap: 0.3rem;
+  text-decoration: none;
 }
 
 .btn-details:hover {
   color: var(--color-signal-orange-hover);
   transform: translateX(3px);
+}
+
+/* Instructor Card Styles */
+.instructor-card {
+  align-items: center;
+  text-align: center;
+  padding-bottom: 1.5rem;
+}
+
+.instructor-card .card-figure {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 2rem auto 0;
+  border: 3px solid var(--color-signal-orange);
+  overflow: hidden;
+  aspect-ratio: auto;
+}
+
+.instructor-card .card-body {
+  padding-top: 1rem;
+}
+
+.instructor-card .guide-exp {
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.instructor-badges {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.instructor-card .btn-details {
+  margin: 0 auto;
+  margin-top: auto;
 }
