@@ -2,7 +2,7 @@ package com.adobe.aem.guides.wknd.core.models.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class MagazineArticle {
+public class MagazineArticle implements OmnichannelCard {
 
     @JsonProperty("title")
     private String title;
@@ -18,6 +18,8 @@ public class MagazineArticle {
 
     @JsonProperty("lastModified")
     private String lastModified;
+
+    private String type = "MATERIA";
 
     public MagazineArticle() {
     }
@@ -68,5 +70,10 @@ public class MagazineArticle {
 
     public void setLastModified(String lastModified) {
         this.lastModified = lastModified;
+    }
+
+    @Override
+    public String getType() {
+        return type;
     }
 }
