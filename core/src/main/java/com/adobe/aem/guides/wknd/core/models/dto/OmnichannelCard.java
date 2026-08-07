@@ -1,8 +1,14 @@
 package com.adobe.aem.guides.wknd.core.models.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public interface OmnichannelCard {
+    
+    @JsonIgnore
+    long getRawDate();
     
     @JsonProperty("title")
     String getTitle();
